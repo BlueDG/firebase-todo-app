@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { fire } from "./firebase";
+import {
+  fetchFirestore,
+  handleRemove,
+  handleSubmit
+} from "./utils/handleFirebase";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  useEffect(() => {
+    fire.onSnapshot(res => fetchFirestore(res, setTodos));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Task Manager</h1>
+      {todos.length > 0 &&
+        todos.map((t, i) => (
+          <div key={i} onClick={() => handleRemove(t)}>
+            {t}
+          </div>
+        ))}
+      <form onSubmit={e => handleSubmit(e, newTask)}>
+        <input type="text" onChange={e => setNewTask(e.target.value)} />
+        <button type="submit">ADD</button>
+      </form>
+    </>
   );
 }
 
