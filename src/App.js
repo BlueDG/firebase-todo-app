@@ -10,7 +10,7 @@ import {
   Task,
   Main,
   Background
-} from "./utils/text";
+} from "./components/text";
 import {
   fetchFirestore,
   handleRemove,
