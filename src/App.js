@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
+import "./css/App.css";
 import { fire } from "./firebase";
+import {
+  Title,
+  Input,
+  Container,
+  Button,
+  Wrapper,
+  Task,
+  Main,
+  Background
+} from "./utils/text";
 import {
   fetchFirestore,
   handleRemove,
@@ -16,17 +27,27 @@ function App() {
 
   return (
     <>
-      <h1>Task Manager</h1>
-      {todos.length > 0 &&
-        todos.map((t, i) => (
-          <div key={i} onClick={() => handleRemove(t)}>
-            {t}
-          </div>
-        ))}
-      <form onSubmit={e => handleSubmit(e, newTask)}>
-        <input type="text" onChange={e => setNewTask(e.target.value)} />
-        <button type="submit">ADD</button>
-      </form>
+      <Background>
+        <Title>Task Manager</Title>
+        <Main>
+          {todos.length > 0 &&
+            todos.map((t, i) => (
+              <Wrapper key={i} onClick={() => handleRemove(t)}>
+                <Task>-> {t}</Task>
+              </Wrapper>
+            ))}
+        </Main>
+        <form onSubmit={e => handleSubmit(e, newTask)}>
+          <Container>
+            <Input
+              type="text"
+              required
+              onChange={e => setNewTask(e.target.value)}
+            />
+            <Button type="submit">ADD</Button>
+          </Container>
+        </form>
+      </Background>
     </>
   );
 }

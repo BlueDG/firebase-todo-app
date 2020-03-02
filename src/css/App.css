@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    font-family: "sevastopol";
+    font-size: 30px;
+    color: #d0eaf7;
+    text-shadow: 2px 2px grey;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+@font-face {
+    font-family: sevastopol;
+    src: url('../fonts/sevastopol.ttf');
+    font-style: normal;
+}
