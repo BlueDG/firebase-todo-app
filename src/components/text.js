@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Background = styled.div`
   background: repeating-linear-gradient(
@@ -18,7 +18,7 @@ export const Title = styled.h1`
   text-align: center;
   padding: 1%;
   &:before {
-    content: " ";
+    content: ' ';
     position: absolute;
     padding: 1%;
     z-index: 2;
@@ -81,9 +81,10 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   outline: none;
-  padding-left: 5%;
+  padding-left: 1%;
   border: 4px solid #d0eaf7;
   margin: 2%;
+  width: 45%;
   background: black;
 `;
 

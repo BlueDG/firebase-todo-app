@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./css/App.css";
-import { fire } from "./firebase";
+import React, { useState, useEffect } from 'react';
+import './css/App.css';
+import { fire } from './firebase';
 import {
   Title,
   Input,
@@ -9,20 +9,20 @@ import {
   Wrapper,
   Task,
   Main,
-  Background
-} from "./components/text";
+  Background,
+} from './components/text';
 import {
   fetchFirestore,
   handleRemove,
-  handleSubmit
-} from "./utils/handleFirebase";
+  handleSubmit,
+} from './utils/handleFirebase';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState('');
 
   useEffect(() => {
-    fire.onSnapshot(res => fetchFirestore(res, setTodos));
+    fire.onSnapshot((res) => fetchFirestore(res, setTodos));
   }, []);
 
   return (
@@ -37,12 +37,13 @@ function App() {
               </Wrapper>
             ))}
         </Main>
-        <form onSubmit={e => handleSubmit(e, newTask)}>
+        <form onSubmit={(e) => handleSubmit(e, newTask)}>
           <Container>
             <Input
               type="text"
+              maxLength="77"
               required
-              onChange={e => setNewTask(e.target.value)}
+              onChange={(e) => setNewTask(e.target.value)}
             />
             <Button type="submit">ADD</Button>
           </Container>
